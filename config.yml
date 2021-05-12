@@ -1,0 +1,45 @@
+Aliases:
+  ver: 'help'
+  ?: 'help'
+  pl: 'help'
+  
+Customized:
+  examplecmd:
+    Cost: 0
+    InvalidFunds_Message: '&cYou do not have enough funds to run this command.'
+    Permission: 'CommandCore.examplecmd'
+    No-Permission: '&cYou do not have the permissions needed to run this command.'
+    Actions:
+      - '[message] &6You performed the example command!'
+      - '[playerChat] &dI performed the example command!'
+      
+  multititle:
+    Actions:
+      - '[playerFulltitle] &6This displays a title!|&7This displays a subtitle!'
+      
+  broad:
+    Actions:
+      - '[broadcast] &6This is a broadcast message.'
+      
+  broadargs:
+    Actions:
+      - '[broadcast] %arg_all%'
+      
+  customitem:
+    Actions:
+      - '[message] &aYou get a custom item!'
+      - '[giveitem] %Item_1%'
+
+Place-Holder_Items:
+  Item_1:
+    Material: GRASS_BLOCK
+    Name: '&6Custom Item'
+    Lore:
+      - ''
+      - '&7This item was customized.'
+      - ''
+    Glow: true
+    Hide-Attributes: true
+
+Custom_Place-Holders:
+  prefix: '&6[&eCommandCore&6] '
