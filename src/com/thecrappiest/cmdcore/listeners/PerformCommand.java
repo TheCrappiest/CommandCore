@@ -52,10 +52,10 @@ public class PerformCommand implements Listener {
 				return;
 			}
 		}
-
-		if (ch.customCommands.containsKey(base)) {
+		
+		CustomizedCommand custom = alias == null ? ch.customCommands.get(base) : ch.customCommands.get(alias);
+		if (custom != null) {
 			event.setCancelled(true);
-			CustomizedCommand custom = alias == null ? ch.customCommands.get(base) : ch.customCommands.get(alias);
 
 			if (custom.getPermission() != null && !p.hasPermission(custom.getPermission())) {
 				if (custom.getNoPermMessage() != null)
@@ -72,8 +72,8 @@ public class PerformCommand implements Listener {
 					cc.economy.withdrawPlayer(Bukkit.getOfflinePlayer(p.getUniqueId()), custom.getCost());
 				}
 			}
-
-			if (custom.retrieveActions().isEmpty()) {
+			
+			if (!custom.retrieveActions().isEmpty()) {
 				String[] finalArgs = args;
 				custom.retrieveActions().forEach(action -> {
 					Actions.runAction(p, action, finalArgs);

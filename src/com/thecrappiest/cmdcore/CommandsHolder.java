@@ -29,7 +29,7 @@ public class CommandsHolder {
 		int commandCount = 0;
 		ConfigurationSection alias = cmdCore.getConfig().getConfigurationSection("Aliases");
 		for (String cmd : alias.getKeys(false)) {
-			aliases.put(cmd, alias.getString("Aliases." + cmd));
+			aliases.put(cmd, alias.getString(cmd));
 			commandCount++;
 		}
 		cmdCore.getLogger().info(commandCount + " configured alias(es) have been added.");
@@ -42,19 +42,19 @@ public class CommandsHolder {
 		for (String cmd : custom.getKeys(false)) {
 
 			List<String> actions = new ArrayList<>();
-			if (custom.isSet("Actions")) {
-				if (custom.isList("Actions")) {
-					actions.addAll(custom.getStringList("Actions"));
+			if (custom.isSet(cmd+".Actions")) {
+				if (custom.isList(cmd+".Actions")) {
+					actions.addAll(custom.getStringList(cmd+".Actions"));
 				} else {
-					actions.add(custom.getString("Actions"));
+					actions.add(custom.getString(cmd+".Actions"));
 				}
 			}
 
-			double cost = custom.isSet("Cost") ? custom.getDouble("Cost") : 0;
-			String invalidFunds = custom.isSet("InvalidFunds_Message") ? custom.getString("InvalidFunds_Message")
+			double cost = custom.isSet(cmd+".Cost") ? custom.getDouble(cmd+".Cost") : 0;
+			String invalidFunds = custom.isSet(cmd+".InvalidFunds_Message") ? custom.getString(cmd+".InvalidFunds_Message")
 					: null;
-			String permNode = custom.isSet("Permission") ? custom.getString("Permission") : null;
-			String noPerm = custom.isSet("No-Permission") ? custom.getString("No-Permission") : null;
+			String permNode = custom.isSet(cmd+".Permission") ? custom.getString(cmd+".Permission") : null;
+			String noPerm = custom.isSet(cmd+".No-Permission") ? custom.getString(cmd+".No-Permission") : null;
 
 			CustomizedCommand customCMD = new CustomizedCommand(cmd, actions, cost, invalidFunds, permNode, noPerm);
 			customCommands.put(cmd, customCMD);

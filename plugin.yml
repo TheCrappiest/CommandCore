@@ -1,6 +1,6 @@
 name: TheCrappiest-CommandCore
 main: com.thecrappiest.cmdcore.CommandCore
-version: 0.0.1
+version: 0.0.2
 soft-depend: [Vault, PlaceholderAPI]
 api-version: 1.13
 commands:
